@@ -26,13 +26,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/main", "/auth/login", "auth/registration").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/game/*").hasAnyRole("ADMIN", "USER")
+                .anyRequest().permitAll()
                 .and()
                 .formLogin().loginPage("/auth/login")
-                .loginProcessingUrl("auth/process_login")
-                .defaultSuccessUrl("game/menu", true)
-                .failureForwardUrl("auth/login?error")
+                .loginProcessingUrl("/auth/process_login")
+                .defaultSuccessUrl("/game/menu", true)
+                .failureForwardUrl("/auth/login?error")
                 .and()
                 .logout().logoutUrl("/auth/logout")
                 .logoutSuccessUrl("/main");
