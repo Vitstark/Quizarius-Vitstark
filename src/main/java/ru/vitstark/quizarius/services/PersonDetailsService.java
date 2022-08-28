@@ -24,7 +24,7 @@ public class PersonDetailsService implements UserDetailsService {
         Optional<Person> person = peopleService.findByEmail(email);
 
         if (person.isEmpty()) {
-            throw new UsernameNotFoundException("User not found!");
+            throw new UsernameNotFoundException("Человек с таким адресом электронной почты не найден!");
         }
 
         return new PersonDetails(person.get());
