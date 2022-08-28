@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
-import ru.vitstark.quizarius.models.enums.Theme;
 
 import javax.persistence.*;
 
@@ -33,4 +32,10 @@ public class Question {
     @Type(type = "string-array")
     @Column(name = "uncorrect_answers", columnDefinition = "varchar[]")
     private String[] unCorrectAnswers;
+
+    public enum Theme {
+        PROGRAMMING,
+        HISTORY,
+        SCIENCE
+    }
 }

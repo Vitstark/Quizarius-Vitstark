@@ -29,8 +29,22 @@ public class Person {
     @Column(name = "password")
     private String password;
 
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
+
+    @Enumerated(value = EnumType.STRING)
+    private Status status;
+
     @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
     @ToString.Exclude
     private Statistic statistic;
+
+    public enum Role {
+        USER, ADMIN
+    }
+
+    public enum Status {
+        ACTIVE, BANNED
+    }
 }
 

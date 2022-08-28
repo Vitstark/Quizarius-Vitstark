@@ -31,6 +31,8 @@ public class PeopleServiceTests {
                 .id(1l)
                 .email("vitstark@mail.ru")
                 .username("vitstark")
+                .role(Person.Role.ADMIN)
+                .status(Person.Status.ACTIVE)
                 .password("123")
                 .statistic(statistic)
                 .build();

@@ -3,8 +3,8 @@ package ru.vitstark.quizarius.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vitstark.quizarius.models.Question;
-import ru.vitstark.quizarius.models.enums.Theme;
 import ru.vitstark.quizarius.reposities.QuestionsRepository;
+import ru.vitstark.quizarius.models.Question.Theme;
 
 import java.util.List;
 import java.util.Optional;

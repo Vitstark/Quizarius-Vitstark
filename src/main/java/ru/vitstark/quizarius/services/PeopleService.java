@@ -30,6 +30,8 @@ public class PeopleService {
                 .username(form.getUsername())
                 .password(form.getPassword())
                 .statistic(new Statistic())
+                .role(Person.Role.USER)
+                .status(Person.Status.ACTIVE)
                 .build();
 
         peopleRepository.save(person);
