@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/game/menu.css}" rel="stylesheet"/>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap}"
+          rel='stylesheet' type='text/css'>
+    <style>
+        .textTitle {
+            padding-top: 100px;
+            text-align: center;
+            font-family: 'Fredoka One', cursive;
+            font-style: normal;
+            font-size: 170px;
+            color: #000000;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+    <a href="/main" ><img src="https://cdn.glitch.global/2fe8bc96-1cc7-4d96-b37b-351c1da0f220/chevron-left.png?v=1653145656164"
+                          height="50" width="50"></a>
+</div>
+
+<div class="textTitle">Quizarius</div>
+
+<hr>
+
+<div class="button">
+    <a th:href="@{/game/choosing}" class="csw-btn-button">Начать игру</a>
+</div>
+
+<div class="button">
+    <a th:href="@{/game/person}" class="csw-btn-button">Статистика</a>
+</div>
+</body>
+</html>

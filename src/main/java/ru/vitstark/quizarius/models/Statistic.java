@@ -32,4 +32,16 @@ public class Statistic {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Person person;
+
+    public Integer unCorrectAnswers() {
+        return answers - correctAnswers;
+    }
+
+    public Integer percentOfCorrectAnswers() {
+        try {
+            return correctAnswers / answers;
+        } catch (ArithmeticException e) {
+            return 0;
+        }
+    }
 }

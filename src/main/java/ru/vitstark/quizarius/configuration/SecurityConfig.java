@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/game/*").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/game/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin().loginPage("/auth/login")

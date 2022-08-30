@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/game/stats.css}" rel="stylesheet"/>
+</head>
+<body>
+<div>
+    <a href="/game/menu" ><img src="https://cdn.glitch.global/2fe8bc96-1cc7-4d96-b37b-351c1da0f220/chevron-left.png?v=1653145656164"
+                               height="50" width="50"></a>
+</div>
+
+<div class="textTitle">Статистика</div>
+
+<div class="outer-box">
+    <div class="box">
+        <div class="stats-line" th:text="'Всего вопросов: ' + ${statistic.answers}"/>
+
+        <div class="stats-line" th:text="'Правильных ответов: ' + ${statistic.correctAnswers}"/>
+
+        <div class="stats-line" th:text="'Неправильных ответов: ' + ${statistic.unCorrectAnswers()}"/>
+
+        <div class="stats-line" th:text="'Процент правильных ответов: ' + ${statistic.percentOfCorrectAnswers()}"/>
+    </div>
+</div>
+
+</body>
+</html>

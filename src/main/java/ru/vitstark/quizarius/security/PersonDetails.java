@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import ru.vitstark.quizarius.models.Person;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class PersonDetails implements UserDetails {
@@ -17,7 +18,7 @@ public class PersonDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(person.getRole().name()));
+        return Collections.singletonList(new SimpleGrantedAuthority(person.getRole().name()));
     }
 
     @Override
@@ -37,7 +38,7 @@ public class PersonDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return person.getStatus().equals(Person.Status.BANNED);
+        return !person.getStatus().equals(Person.Status.BANNED);
     }
 
     @Override
