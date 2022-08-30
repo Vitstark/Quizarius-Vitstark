@@ -5,6 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.vitstark.quizarius.security.PersonDetails;
 
@@ -28,5 +29,10 @@ public class GameController {
 
         model.addAttribute("statistic", personDetails.getPerson().getStatistic());
         return "game/stats";
+    }
+
+    @GetMapping("/choosing")
+    public String personStaticPage(@ModelAttribute("theme") String theme) {
+        return "game/choosing";
     }
 }

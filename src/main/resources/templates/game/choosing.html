@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/game/choosing.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="textTitle">Выберите тему</div>
+<div class="outer-box">
+  <form method="post" action="/game/play">
+
+    <div class="box">
+        <div class="switch">
+        <input type="radio" id="theme" name="theme" value="HISTORY"/>
+            <img src="https://cdn.glitch.global/8b46b997-eaa5-42d4-8917-819cd6ef0516/History.png?v=1653145780926" class="image"/>
+            <label for="theme">История</label>
+        </div>
+
+        <div class="switch">
+            <input type="radio" id="theme" name="theme" value="PROGRAMMING"/>
+            <img src="https://cdn.glitch.global/8b46b997-eaa5-42d4-8917-819cd6ef0516/Computer-Science.png?v=1653145780868" class="image"/>
+            <label for="theme">Программирование</label>
+        </div>
+
+        <div class="switch">
+            <input type="radio" id="theme" name="theme" value="SCIENCE"/>
+            <img src="https://cdn.glitch.global/8b46b997-eaa5-42d4-8917-819cd6ef0516/Exact-Sciences.png?v=1653145781102" class="image"/>
+            <label for="theme">Наука</label>
+        </div>
+
+        <input type="submit" class="in" value="Играть"/>
+    </div>
+  </form>
+</div>
+</body>
+</html>
