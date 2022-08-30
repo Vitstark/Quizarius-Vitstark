@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class Statistic {
 
@@ -22,6 +21,11 @@ public class Statistic {
 
     @Column(name = "correct_answers")
     private Integer correctAnswers;
+
+    public Statistic() {
+        answers = 0;
+        correctAnswers = 0;
+    }
 
     @OneToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")

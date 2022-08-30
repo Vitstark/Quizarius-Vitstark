@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import ru.vitstark.quizarius.dto.PersonSignUpForm;
-import ru.vitstark.quizarius.models.Person;
 import ru.vitstark.quizarius.services.PeopleService;
 
 @Component
@@ -19,7 +18,7 @@ public class PersonSignUpFormValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return Person.class.equals(clazz);
+        return PersonSignUpForm.class.equals(clazz);
     }
 
     @Override
@@ -27,7 +26,7 @@ public class PersonSignUpFormValidator implements Validator {
         PersonSignUpForm form = (PersonSignUpForm) target;
 
         if (peopleService.findByEmail(form.getEmail()).isPresent()) {
-            errors.rejectValue("email", "Пользователь с этой электронной почтой уже существует");
+            errors.rejectValue("email", "", "Пользователь с этой электронной почтой уже существует");
         }
     }
 }

@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:href="@{/styles/auth/login.css}" rel="stylesheet"/>
+
 </head>
 <body>
+<div class="textTitle">Авторизация</div>
+<div class="outer-box">
+    <form name="f" method="post" action="/process_login">
+        <input type="submit" class="in" value="Войти"/>
+        <a class="in" href="/auth/registration">Регистрация</a>
 
+        <div class="box">
+
+            <label class="first" for="username">Введите адрес электронной почты</label>
+            <input type="text" class="text-field" name="username" id="username"/>
+
+            <label for="password">Введите пароль</label>
+            <input type="password" class="text-field" name="password" id="password"/>
+
+            <div th:if="${param.error}" class="wrong" th:value="${param.error}">error</div>
+        </div>
+    </form>
+</div>
 </body>
 </html>

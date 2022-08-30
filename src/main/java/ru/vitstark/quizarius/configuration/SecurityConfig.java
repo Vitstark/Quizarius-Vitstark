@@ -2,37 +2,34 @@ package ru.vitstark.quizarius.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.vitstark.quizarius.services.PersonDetailsService;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private final PersonDetailsService personDetailsService;
+    private final AuthenticationProvider provider;
 
     @Autowired
-    public SecurityConfig(PersonDetailsService personDetailsService) {
-        this.personDetailsService = personDetailsService;
+    public SecurityConfig(AuthenticationProvider provider) {
+        this.provider = provider;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
+        http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/game/*").hasAnyRole("ADMIN", "USER")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin().loginPage("/auth/login")
-                .loginProcessingUrl("/auth/process_login")
+                .loginProcessingUrl("/process_login")
                 .defaultSuccessUrl("/game/menu", true)
-                .failureForwardUrl("/auth/login?error")
+                .failureUrl("/auth/login?error")
                 .and()
                 .logout().logoutUrl("/auth/logout")
                 .logoutSuccessUrl("/main");
@@ -40,12 +37,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(personDetailsService)
-                .passwordEncoder(passwordEncoder());
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        auth.authenticationProvider(provider);
     }
 }

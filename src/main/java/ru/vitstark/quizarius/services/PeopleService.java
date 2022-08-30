@@ -1,6 +1,7 @@
 package ru.vitstark.quizarius.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.vitstark.quizarius.dto.PersonSignUpForm;
 import ru.vitstark.quizarius.models.Person;
@@ -14,10 +15,12 @@ import java.util.Optional;
 public class PeopleService {
 
     private final PeopleRepository peopleRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public PeopleService(PeopleRepository peopleRepository) {
+    public PeopleService(PeopleRepository peopleRepository, PasswordEncoder passwordEncoderl) {
         this.peopleRepository = peopleRepository;
+        this.passwordEncoder = passwordEncoderl;
     }
 
     public List<Person> findAll() {
@@ -28,11 +31,13 @@ public class PeopleService {
         Person person = Person.builder()
                 .email(form.getEmail())
                 .username(form.getUsername())
-                .password(form.getPassword())
+                .password(passwordEncoder.encode(form.getPassword()))
                 .statistic(new Statistic())
                 .role(Person.Role.USER)
                 .status(Person.Status.ACTIVE)
                 .build();
+
+        person.getStatistic().setPerson(person);
 
         peopleRepository.save(person);
     }

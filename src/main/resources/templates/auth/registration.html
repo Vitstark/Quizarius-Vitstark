@@ -3,8 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:href="@{/styles/auth/registration.css}" rel="stylesheet"/>
+
 </head>
 <body>
+<div class="textTitle">Регистрация</div>
+<div class="outer-box">
+    <form method="post" th:action="@{/auth/registration}" th:object="${form}">
+        <a class="in" href="/auth/login">Авторизация</a>
+        <input type="submit" class="in" value="Создать"/>
+
+        <div class="box">
+            <label for="email">Введите адрес электронной почты</label>
+            <input type="text" class="text-field" th:field="*{email}" id="email"/>
+            <div class="wrong" th:if="${#fields.hasErrors('email')}"
+                 th:errors="*{email}">Email error</div>
+
+            <label for="username">Придумайте имя</label>
+            <input type="text" class="text-field" th:field="*{username}" id="username"/>
+            <div class="wrong" th:if="${#fields.hasErrors('username')}"
+                 th:errors="*{username}">User error</div>
+
+            <label for="password">Придумайте пароль</label>
+            <input type="password" class="text-field" th:field="*{password}" id="password"/>
+            <div class="wrong" th:if="${#fields.hasErrors('password')}"
+                 th:errors="*{password}">Password errors</div>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>
