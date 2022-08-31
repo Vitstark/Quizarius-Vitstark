@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/game/play.css}" rel="stylesheet"/>
+</head>
+<body>
+<div>
+    <a href="/game/choosing" ><img src="https://cdn.glitch.global/2fe8bc96-1cc7-4d96-b37b-351c1da0f220/chevron-left.png?v=1653145656164"
+                          height="50" width="50"></a>
+</div>
+
+<div class="outer-box">
+
+    <div class="question" th:text="${question.bodyOfQuestion}"></div>
+
+    <form method="post" th:action="@{/game/play}">
+        <input type="hidden" th:field="${question.theme}" th:value="${question.theme}">
+        <input type="hidden" th:field="${question.correctAnswer}" th:value="${question.correctAnswer}">
+
+        <div class="box">
+            <div class="switch">
+                <input type="radio" id="answer" name="answer" field="answer" th:value="${question.answers[0]}"/>
+                <label for="answer" th:text="${question.answers[0]}"/>
+            </div>
+
+            <div class="switch">
+                <input type="radio" id="answer" name="answer" field="answer" th:value="${question.answers[1]}"/>
+                <label for="answer" th:text="${question.answers[1]}"/>
+            </div>
+
+            <div class="switch">
+                <input type="radio" id="answer" name="answer" field="answer" th:value="${question.answers[2]}"/>
+                <label for="answer" th:text="${question.answers[2]}"/>
+            </div>
+
+            <div class="switch">
+                <input type="radio" id="answer" name="answer" field="answer" th:value="${question.answers[3]}"/>
+                <label for="answer" th:text="${question.answers[3]}"/>
+            </div>
+
+            <input type="submit" class="in" value="Ответить!">
+        </div>
+    </form>
+</div>
+</body>
+</html>
