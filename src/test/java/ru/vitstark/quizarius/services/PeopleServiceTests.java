@@ -70,7 +70,6 @@ public class PeopleServiceTests {
 
         assertEquals("test@mail.ru", person.getEmail());
         assertEquals("testPerson", person.getUsername());
-        assertEquals("22213", person.getPassword());
 
         peopleRepository.deleteById(person.getId());
     }

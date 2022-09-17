@@ -39,7 +39,7 @@ public class Statistic {
 
     public Integer percentOfCorrectAnswers() {
         try {
-            return correctAnswers / answers;
+            return 100 * correctAnswers / answers;
         } catch (ArithmeticException e) {
             return 0;
         }
