@@ -15,7 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 public class MainControllerTest {
     @Autowired
     private MockMvc mvc;
-    @Test
     public void testMainPage() throws Exception {
         mvc.perform(get("/main"))
                 .andExpect(status().isOk())

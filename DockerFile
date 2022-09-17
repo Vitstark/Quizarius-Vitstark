@@ -1,0 +1,5 @@
+FROM 18-alpine3.14-jdk
+WORKDIR .
+ADD src .
+RUN ./mvnw package
+CMD ["java","-jar","target/quizarius-0.0.1-SNAPSHOT.jar"]
