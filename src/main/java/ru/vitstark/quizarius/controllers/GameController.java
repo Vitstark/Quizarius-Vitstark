@@ -58,12 +58,6 @@ public class GameController {
     @PostMapping("/play")
     public String registerSessionAndCreateNew(Model model, @ModelAttribute("answer") String answer,
                                               @ModelAttribute("question") QuestionDto questionDto) {
-//        System.out.println(model.containsAttribute("answer"));
-//        System.out.println(model.containsAttribute("question"));
-
-//        String answer = (String) model.getAttribute("answer");
-//        QuestionDto questionDto = (QuestionDto) model.getAttribute("question");
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PersonDetails person = (PersonDetails) authentication.getPrincipal();
 
