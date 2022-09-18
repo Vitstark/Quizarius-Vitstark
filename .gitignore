@@ -5,7 +5,7 @@ target/
 !**/src/test/**/target/
 
 *.class
-*.properties
+**/src/main/resources/application.properties
 *.sql
 
 ### STS ###
